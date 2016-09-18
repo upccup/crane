@@ -59,6 +59,7 @@ collect-cover-data:
                 fi\
 		;)
 
+
 test-cover-html:
 	go tool cover -html=coverage-all.out -o coverage.html
 
