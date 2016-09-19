@@ -6,9 +6,13 @@ services:
 language: go
 go:
   - 1.5.4
+  
+before_install:
+  - go get github.com/mattn/goveralls
 
 script:
   - docker run -i --rm -w /go/src/github.com/Dataman-Cloud/crane -v $(pwd):/go/src/github.com/Dataman-Cloud/crane golang:1.5.4 make
   - docker run -i --rm -w /go/src/github.com/Dataman-Cloud/crane -v $(pwd):/go/src/github.com/Dataman-Cloud/crane golang:1.5.4 make collect-cover-data
   - docker run -i --rm -w /go/src/github.com/Dataman-Cloud/crane -v $(pwd):/go/src/github.com/Dataman-Cloud/crane golang:1.5.4 make test-cover-html
   - docker run -i --rm -w /go/src/github.com/Dataman-Cloud/crane -v $(pwd):/go/src/github.com/Dataman-Cloud/crane golang:1.5.4 make test-cover-func
+  - $HOME/gopath/bin/goveralls -service=travis-ci
