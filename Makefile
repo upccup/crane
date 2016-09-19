@@ -64,3 +64,8 @@ test-cover-html:
 
 test-cover-func:
 	go tool cover -func=coverage-all.out
+	
+goveralls:
+	go get github.com/mattn/goveralls
+	go test -covermode=count -coverprofile=profile.cov
+	goveralls -coverprofile=profile.cov -service=travis-ci
