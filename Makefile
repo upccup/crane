@@ -69,5 +69,5 @@ goveralls:
 	go get golang.org/x/tools/cmd/cover
 	go get github.com/mattn/goveralls
 	echo "mode: count" > coverage-all.out
-	go test -v -coverprofile=profile.cov -covermode=count ./src/...
+	go test -v ./src/... -coverprofile=profile.cov -covermode=count 
 	goveralls -coverprofile=profile.cov -service=travis-ci
