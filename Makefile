@@ -70,7 +70,7 @@ goveralls:
 	go get github.com/mattn/goveralls
 	echo "mode: count" > coverage-all.out
 	@$(foreach pkg,$(PACKAGES),\
-		go test -v -coverprofile=coverage.out -covermode=count $(pkg) || exit $$?;\
+		go test -v -coverprofile=profile.cov -covermode=count $(pkg) || exit $$?;\
 		if [ -f coverage.out ]; then\
 		    tail -n +2 coverage.out >> coverage-all.out;\
                 fi\
