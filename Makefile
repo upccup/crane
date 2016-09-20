@@ -66,6 +66,7 @@ test-cover-func:
 	go tool cover -func=coverage-all.out
 	
 goveralls:
+	go get golang.org/x/tools/cmd/cover
 	go get github.com/mattn/goveralls
 	echo "mode: count" > coverage-all.out
 	@$(foreach pkg,$(PACKAGES),\
