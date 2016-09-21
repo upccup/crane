@@ -68,11 +68,6 @@ test-cover-func:
 goveralls:
 	go get github.com/mattn/goveralls
 	go get golang.org/x/tools/cmd/cover
-	echo "mode: count" > coverage-all.out
-	@$(foreach pkg,$(PACKAGES),\
-		go test -v -coverprofile=profile.cov -covermode=count $(pkg) || exit $$?;\
-		goveralls -coverprofile=profile.cov -service=travis-ci; \
-		if [ -f coverage.out ]; then\
-		    tail -n +2 coverage.out >> coverage-all.out;\
-                fi\
-		;)
+	cd crane
+	goveralls -package=github.com/Dataman-Cloud/crane/src/dockerclient -service=travis-ci
+
