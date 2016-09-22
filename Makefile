@@ -75,7 +75,6 @@ goveralls:
 	    fi \
 	done
 	
-	export CODECOV_TOKEN="535e2d67-b5d4-4353-8399-b0f60d7589e1"
 	curl -sSL https://codecov.io/bash | bash
 	
 
