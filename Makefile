@@ -76,6 +76,6 @@ goveralls:
 	done
 	curl https://codecov.io/bash > test.sh
 	chmod 755 test.sh
-	sh test.sh
+	bash test.sh
 	
 
