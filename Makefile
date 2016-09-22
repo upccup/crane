@@ -71,7 +71,7 @@ goveralls:
 	    go test -race -coverprofile=profile.out -covermode=atomic $d; \
 	    if [ -f profile.out ]; then \
 	        cat profile.out >> coverage.txt; \
-	        rm profile.out \
+	        rm profile.out; \
 	    fi \
 	done
 	bash <(curl -s https://codecov.io/bash)
