@@ -66,8 +66,13 @@ test-cover-func:
 	go tool cover -func=coverage-all.out
 	
 goveralls:
-	go get github.com/mattn/goveralls
-	go get golang.org/x/tools/cmd/cover
-	go test -v -covermode=count -coverprofile=coverage.out ./src/dockerclient/
-	goveralls -coverprofile=coverage.out -service=travis-ci
+	echo "" > coverage.txt
+	for d in $(go list ./... | grep -v vendor); do
+	    go test -race -coverprofile=profile.out -covermode=atomic $d
+	    if [ -f profile.out ]; then
+	        cat profile.out >> coverage.txt
+	        rm profile.out
+	    fi
+	done
+	bash <(curl -s https://codecov.io/bash)
 
