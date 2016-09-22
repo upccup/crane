@@ -74,5 +74,6 @@ goveralls:
 	        rm profile.out; \
 	    fi \
 	done
-	curl -s https://codecov.io/bash
+	bash -c "$(curl -s https://codecov.io/bash)"
+	
 
