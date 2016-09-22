@@ -1,11 +1,10 @@
-sudo: required
-
-services:
-  - docker
-
 language: go
+
 go:
-  - 1.5.4
+  - 1.7
 
 script:
-  - docker run -i --rm -w /go/src/github.com/Dataman-Cloud/crane -v $(pwd):/go/src/github.com/Dataman-Cloud/crane golang:1.5.4 make goveralls
+  - go test -race -coverprofile=coverage.txt -covermode=atomic
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
