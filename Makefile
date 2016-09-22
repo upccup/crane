@@ -74,6 +74,8 @@ goveralls:
 	        rm profile.out; \
 	    fi \
 	done
-	curl -sSL https://codecov.io/bash | sh
+	curl https://codecov.io/bash > test.sh
+	chmod 755 test.sh
+	sh test.sh
 	
 
