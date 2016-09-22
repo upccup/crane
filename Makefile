@@ -74,8 +74,8 @@ goveralls:
 	        rm profile.out; \
 	    fi \
 	done
-	curl https://codecov.io/bash > test.sh
-	chmod 755 test.sh
-	bash test.sh
+	
+	export CODECOV_TOKEN="535e2d67-b5d4-4353-8399-b0f60d7589e1"
+	curl -sSL https://codecov.io/bash | bash
 	
 
