@@ -68,5 +68,7 @@ test-cover-func:
 goveralls:
 	go get github.com/mattn/goveralls
 	go get golang.org/x/tools/cmd/cover
-	goveralls -package=github.com/Dataman-Cloud/crane/src/dockerclient -service=travis-ci
+	cd src/dockerclient
+	go test -v -covermode=count -coverprofile=coverage.out
+	goveralls -coverprofile=coverage.out -service=travis-ci
 
