@@ -74,7 +74,6 @@ goveralls:
 	        rm profile.out; \
 	    fi \
 	done
-	
 	curl -sSL https://codecov.io/bash | bash
 	
 
